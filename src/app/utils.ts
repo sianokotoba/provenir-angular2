@@ -17,6 +17,15 @@ export const addToCoffeeList = (coffeeList, newCoffee) => {
   coffeeList.push(newCoffee);
 }
 
-export const deleteFromList = (coffeeList) => {
+export const deleteFromList = (coffeeList, idx) => {
+  deleteFromLocalStorage(coffeeList[idx].name);
+  coffeeList.splice(idx, 1);
+}
 
+export const deleteFromLocalStorage = (coffeeName) => {
+  if (localStorage.length > 0) {
+    if (localStorage.getItem(coffeeName)) {
+      localStorage.removeItem(coffeeName);
+    }
+  }
 }

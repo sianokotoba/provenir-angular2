@@ -8,19 +8,19 @@
   </div>
   <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
         NAME:
       </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+      <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeName"
           required
           ngModel name="name">
       </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
         TYPE:
       </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
-        <mdl-select label="Type" floating-label
+      <div class="input-areas mdl-cell mdl-cell--11-col">
+        <mdl-select
           required
           ngModel name="type">
           <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
