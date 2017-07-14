@@ -4,6 +4,18 @@
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
+  -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+.initial {
+  -webkit-flex: initial;
+          flex: initial;
+  width: 200px;
+  min-width: 100px;
+  margin: 15px 15px 15px 15px;
 }
 
 .flex1 {
@@ -15,10 +27,26 @@
           flex: 2;
 }
 
-.flex50 {
-  -webkit-flex: initial;
-          flex: initial;
-  width: 100px;
-  padding: 10px;
-  min-width: 100vw;
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.vertical-container {
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.coffee-banner {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+
+.img-center {
+  display: block;
+  margin: 0 auto;
 }
