@@ -1,24 +1,24 @@
-<!-- <div class="mdl-grid"> -->
+<div [hidden]="submitted">
   <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeName"
           required
-          [(ngModel)]="coffee.name" name="name">
+          ngModel name="name">
         <label class="mdl-textfield__label" for="coffeeName">Name</label>
       </div>
 
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
         <mdl-select label="Type" floating-label
           required
-          [(ngModel)]="coffee.type" name="type">
+          ngModel name="type">
           <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
         </mdl-select>
       </div>
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
           required
-          [(ngModel)]="coffee.displayText" name="displayText">
+          ngModel name="displayText">
         <label class="mdl-textfield__label" for="coffeeDisplayText">Display Text</label>
       </div>
       <!-- Accent-colored raised button with ripple -->
@@ -30,9 +30,20 @@
       </div>
     </div>
   </form>
-<!-- </div> -->
-<div [hidden]="!submitted">
-  <h2>You submitted the following:</h2>
+</div>
 
-  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+<div [hidden]="!submitted">
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+    <h5>Congrats on adding to this coffee-crazed world!</h5>
+    <h6>Your submission is as follows:</h6>
+  </div>
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+    Name: {{coffee.name}}
+  </div>
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+    Type: {{coffee.type}}
+  </div>
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+    Display Text: {{coffee.displayText}}
+  </div>
 </div>

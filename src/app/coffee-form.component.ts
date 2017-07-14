@@ -18,14 +18,18 @@ export class CoffeeFormComponent {
     'Party Time'
   ];
 
-  coffee = new Coffee('test1', 'test2', 'test3', 'test4');
+  coffee = {};
 
   submitted = false;
 
   onSubmit(form) {
+    this.coffee = new Coffee(form.value.name, form.value.type, form.value.displayText, '../assets/coffee-default.png');
+    localStorage.setItem(form.value.name, JSON.stringify({
+      type: form.value.type,
+      displayText: form.value.displayText,
+      imgURL: '../assets/coffee-default.png'
+    }))
     this.submitted = true;
-    console.log('~~~~~~~~', form.value)
-    console.log('hfjkhfkdjhajkf', localStorage)
   }
 
   // TODO: Remove this when we're done
