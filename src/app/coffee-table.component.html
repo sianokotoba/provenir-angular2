@@ -11,7 +11,7 @@
 </div>
 
 <mdl-expansion-panel-group #panelGroup>
-  <mdl-expansion-panel *ngFor="let coffee of coffees">
+  <mdl-expansion-panel *ngFor="let coffee of coffees; let idx = index">
     <mdl-expansion-panel-header>
       <mdl-expansion-panel-header-list-content>
         <div class="flexcontainer">
@@ -24,17 +24,17 @@
 
     <mdl-expansion-panel-content>
       <mdl-expansion-panel-body>
-        <p>This is expansion panel {{i}}</p>
+        <p>This is expansion panel {{idx}}</p>
       </mdl-expansion-panel-body>
 
       <mdl-expansion-panel-footer>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
           >
-          Cancel
+          Save
         </button>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          >
-          Save
+          (click)="deleteFromList()">
+          Delete
         </button>
       </mdl-expansion-panel-footer>
     </mdl-expansion-panel-content>

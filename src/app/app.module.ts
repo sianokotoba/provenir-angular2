@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }   from '@angular/forms';
 import { MdlSelectModule } from '@angular2-mdl-ext/select';
 import { MdlExpansionPanelModule } from '@angular2-mdl-ext/expansion-panel';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { CoffeeFormComponent } from './coffee-form.component';
@@ -23,7 +24,11 @@ import { CoffeeDashComponent } from './coffee-dash.component';
     BrowserAnimationsModule,
     FormsModule,
     MdlSelectModule,
-    MdlExpansionPanelModule
+    MdlExpansionPanelModule,
+    MaterialModule
+  ],
+  exports: [
+    MaterialModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

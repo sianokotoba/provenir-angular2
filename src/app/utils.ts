@@ -1,26 +1,22 @@
-export const updateCoffeeList = (coffeeList) => {
-  console.log('updating now')
+export const checkLocalStorage = (coffeeList) => {
+  console.log('on init yo, checked')
   if (localStorage.length > 0) {
-    for (let i = 0; i < coffeeList.length; i++) {
-      if (localStorage[coffeeList[i].name]) {
-        coffeeList[i] = JSON.parse(localStorage.getItem(coffeeList[i].name));
-      }
+    for (let key in localStorage) {
+      coffeeList.push(JSON.parse(localStorage.getItem(key)));
     }
   }
 }
 
-export const addToCoffeeList = (coffeeList) => {
+export const updateCoffeeList = (coffeeList, idx, editedCoffee) => {
+  console.log('updating now')
+  coffeeList[idx] = editedCoffee;
+}
+
+export const addToCoffeeList = (coffeeList, newCoffee) => {
   console.log('adding now')
-  if (localStorage.length > 0) {
-    for (let key in localStorage) {
-      for (let i = 0; i < coffeeList.length; i++) {
-        if (i === coffeeList.length - 1 && !localStorage[coffeeList[i].name]) {
-          coffeeList.push(JSON.parse(localStorage.getItem(key)))
-        }
-        if (localStorage[coffeeList[i].name]) {
-          break;
-        }
-      }
-    }
-  }
+  coffeeList.push(newCoffee);
+}
+
+export const deleteFromList = (coffeeList) => {
+
 }
