@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Coffee } from './coffee';
+import { COFFEES } from './coffee-seed';
 
 @Component({
   selector: 'coffee-dash',
@@ -9,5 +10,5 @@ import { Coffee } from './coffee';
 })
 
 export class CoffeeDashComponent {
-
+  coffees = COFFEES;
 }
