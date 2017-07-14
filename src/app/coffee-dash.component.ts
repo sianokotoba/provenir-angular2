@@ -7,3 +7,7 @@ import { Coffee } from './coffee';
   templateUrl: './coffee-dash.component.html',
   styleUrls: ['./coffee-dash.component.css']
 })
+
+export class CoffeeDashComponent {
+
+}

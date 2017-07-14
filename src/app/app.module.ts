@@ -5,14 +5,16 @@ import { MdlSelectModule } from '@angular2-mdl-ext/select';
 
 import { AppComponent } from './app.component';
 import { CoffeeFormComponent } from './coffee-form.component';
-
-
+import { CoffeeTableComponent } from './coffee-table.component';
+import { CoffeeDashComponent } from './coffee-dash.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CoffeeFormComponent
+    CoffeeFormComponent,
+    CoffeeTableComponent,
+    CoffeeDashComponent
   ],
   imports: [
     BrowserModule,

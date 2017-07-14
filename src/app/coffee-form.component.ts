@@ -31,13 +31,4 @@ export class CoffeeFormComponent {
     }))
     this.submitted = true;
   }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.coffee); }
-
-  createNewCoffee(form) {
-    console.log('~~~~~~~~', form.value)
-    console.log('hfjkhfkdjhajkf', localStorage)
-  }
-
 }
