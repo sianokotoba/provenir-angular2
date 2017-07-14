@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 
 import { Coffee } from './coffee';
+import { COFFEES } from './coffee-seed';
+
+import { addToCoffeeList } from './utils';
 
 @Component({
   selector: 'coffee-form',
@@ -19,6 +22,7 @@ export class CoffeeFormComponent {
   ];
 
   coffee = {};
+  coffees = COFFEES;
 
   submitted = false;
 
@@ -30,6 +34,7 @@ export class CoffeeFormComponent {
       displayText: form.value.displayText,
       imgURL: '../assets/coffee-default.png'
     }))
+    addToCoffeeList(this.coffees);
     this.submitted = true;
   }
 }
