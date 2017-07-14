@@ -1,30 +1,44 @@
 <div [hidden]="submitted">
+  <div class="center-align">
+    <h3>
+      Create Your Coffee
+    </h3>
+    <hr />
+    <img src='../assets/coffee-default.png'/>
+  </div>
   <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        NAME:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeName"
           required
           ngModel name="name">
-        <label class="mdl-textfield__label" for="coffeeName">Name</label>
       </div>
-
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        TYPE:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <mdl-select label="Type" floating-label
           required
           ngModel name="type">
           <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
         </mdl-select>
       </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        DISPLAY TEXT:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
           required
           ngModel name="displayText">
-        <label class="mdl-textfield__label" for="coffeeDisplayText">Display Text</label>
       </div>
       <!-- Accent-colored raised button with ripple -->
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          type="submit">
+          type="submit"
+          [disabled]="!coffeeForm.form.valid">
           Submit
         </button>
       </div>
@@ -34,20 +48,23 @@
 
 <div [hidden]="!submitted">
   <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-    <h5>Congrats on adding to this coffee-crazed world!</h5>
-    <h6>Your submission is as follows:</h6>
+    <h3>Congrats!</h3>
+    <hr />
+    <img src='../assets/coffee-default.png'/>
+    <h5>You've added the following to this coffee-crazed world:</h5>
   </div>
   <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-    Name: {{coffee.name}}
+    <h6>NAME: {{coffee.name}}</h6>
   </div>
   <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-    Type: {{coffee.type}}
+    <h6>TYPE: {{coffee.type}}</h6>
   </div>
   <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-    Display Text: {{coffee.displayText}}
+    <h6>DISPLAY TEXT: {{coffee.displayText}}</h6>
   </div>
   <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+      style="display: block"
       (click)="newSubmission()">
       New Submission
     </button>

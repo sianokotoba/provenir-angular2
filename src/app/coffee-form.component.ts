@@ -23,7 +23,6 @@ export class CoffeeFormComponent {
 
   coffee = {};
   coffees = COFFEES;
-
   submitted = false;
 
   onSubmit(form) {
