@@ -8,30 +8,37 @@
   </div>
   <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        NAME:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeName"
           required
           ngModel name="name">
-        <label class="mdl-textfield__label" for="coffeeName">Name</label>
       </div>
-
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        TYPE:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <mdl-select label="Type" floating-label
           required
           ngModel name="type">
           <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
         </mdl-select>
       </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+        DISPLAY TEXT:
+      </div>
+      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
           required
           ngModel name="displayText">
-        <label class="mdl-textfield__label" for="coffeeDisplayText">Display Text</label>
       </div>
       <!-- Accent-colored raised button with ripple -->
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          type="submit">
+          type="submit"
+          [disabled]="!coffeeForm.form.valid">
           Submit
         </button>
       </div>
