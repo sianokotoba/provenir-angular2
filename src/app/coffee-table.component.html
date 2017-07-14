@@ -8,35 +8,38 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <div>
+      hello
+    </div>
+    <tr *ngFor="let coffee of coffees">
       <mdl-expansion-panel-group #panelGroup>
-        <mdl-expansion-panel *ngFor="let coffee of coffees">
-          <mdl-expansion-panel-header>
-            <mdl-expansion-panel-header-list-content>
-              <td>{{coffee.name}}</td>
-              <td>{{coffee.type}}</td>
-              <td>{{coffee.displayText}}</td>
-            </mdl-expansion-panel-header-list-content>
-          </mdl-expansion-panel-header>
+            <mdl-expansion-panel>
+              <mdl-expansion-panel-header>
+                <mdl-expansion-panel-header-list-content>
+                  <td>{{coffee.name}}</td>
+                  <td>{{coffee.type}}</td>
+                  <td>{{coffee.displayText}}</td>
+                </mdl-expansion-panel-header-list-content>
+              </mdl-expansion-panel-header>
 
-          <mdl-expansion-panel-content>
-            <mdl-expansion-panel-body>
-              <p>This is expansion panel {{i}}</p>
-            </mdl-expansion-panel-body>
+              <mdl-expansion-panel-content>
+                <mdl-expansion-panel-body>
+                  <p>This is expansion panel {{i}}</p>
+                </mdl-expansion-panel-body>
 
-            <mdl-expansion-panel-footer>
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                >
-                Cancel
-              </button>
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                >
-                Save
-              </button>
-            </mdl-expansion-panel-footer>
-          </mdl-expansion-panel-content>
+                <mdl-expansion-panel-footer>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    >
+                    Cancel
+                  </button>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    >
+                    Save
+                  </button>
+                </mdl-expansion-panel-footer>
+              </mdl-expansion-panel-content>
 
-        </mdl-expansion-panel>
+            </mdl-expansion-panel>
       </mdl-expansion-panel-group>
     </tr>
   </tbody>
