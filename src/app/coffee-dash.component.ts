@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Coffee } from './coffee';
 import { COFFEES } from './coffee-seed';
+import { checkLocalStorage } from './utils';
 
 @Component({
   selector: 'coffee-dash',
@@ -9,6 +10,13 @@ import { COFFEES } from './coffee-seed';
   styleUrls: ['./coffee-dash.component.css']
 })
 
-export class CoffeeDashComponent {
+export class CoffeeDashComponent implements OnInit {
+
   coffees = COFFEES;
+
+  constructor () {}
+
+  ngOnInit() {
+    checkLocalStorage(this.coffees);
+  }
 }

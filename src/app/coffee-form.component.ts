@@ -25,6 +25,7 @@ export class CoffeeFormComponent {
   onSubmit(form) {
     this.coffee = new Coffee(form.value.name, form.value.type, form.value.displayText, '../assets/coffee-default.png');
     localStorage.setItem(form.value.name, JSON.stringify({
+      name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
       imgURL: '../assets/coffee-default.png'

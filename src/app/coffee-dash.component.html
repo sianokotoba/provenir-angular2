@@ -1,11 +1,9 @@
 <div class="flexcontainer" *ngFor="let coffee of coffees">
-  <div class="flex1">
-    {{ coffee.name }}
-  </div>
-  <div class="flex1">
-    {{ coffee.type }}
-  </div>
-  <div class="flex2">
-    {{ coffee.displayText }}
+  <div class="flex50">
+    <img src={{coffee.imgURL}} />
+    {{coffee.name}}
+    {{coffee.type}}
+    {{coffee.displayText}}
+    <hr />
   </div>
 </div>

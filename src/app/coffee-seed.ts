@@ -4,12 +4,12 @@ export const COFFEES: Coffee[] = [
   { name: 'Cappuccino',
     type: 'Hot',
     displayText: 'Espresso and milk, topped with milk foam',
-    imgURL: '../assets/coffee-coffee-cappuccino.png'
+    imgURL: '../assets/coffee-cappuccino.png'
   },
   { name: 'Americano',
     type: 'Hot',
     displayText: 'A mix of Espresso and agua (water!)',
-    imgURL: '../assets/coffee-coffee-americano.png'
+    imgURL: '../assets/coffee-americano.png'
   },
   { name: 'Espresso',
     type: 'Hot',
@@ -19,16 +19,16 @@ export const COFFEES: Coffee[] = [
   { name: 'Cafe Macchiato',
     type: 'Hot',
     displayText: 'Espresso topped with lots of milk foam',
-    imgURL: '../assets/coffee-coffee-macchiato.png'
+    imgURL: '../assets/coffee-macchiato.png'
   },
   { name: 'Mocha',
     type: 'Hot',
     displayText: 'Espresso + chocolate syrup and lots of milk',
-    imgURL: '../assets/coffee-coffee-mocha.png'
+    imgURL: '../assets/coffee-mocha.png'
   },
   { name: 'Latte',
     type: 'Hot',
     displayText: 'Espresso and lots of milk',
-    imgURL: '../assets/coffee-coffee-latte.png'
+    imgURL: '../assets/coffee-latte.png'
   },
 ];
