@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { Coffee } from './coffee';
 import { COFFEES } from './coffee-seed';
-
 import { addToCoffeeList } from './utils';
 
 @Component({

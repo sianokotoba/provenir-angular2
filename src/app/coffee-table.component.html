@@ -1,12 +1,18 @@
-<div class="flexcontainer">
+<div class="center-align">
+  <h3>
+    Coffee Data
+  </h3>
+  <hr />
+</div>
+<div class="flexcontainer center-align">
   <div class="flex1">
-    Name
+    <h5 style="padding-left: 25px">NAME</h5>
   </div>
   <div class="flex1">
-    Type
+    <h5>TYPE</h5>
   </div>
-  <div class="flex2" style="z-index:-1">
-    Display Text
+  <div class="flex2">
+    <h5>DISPLAY TEXT</h5>
   </div>
 </div>
 
@@ -23,20 +29,53 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <mdl-expansion-panel-body>
-        <p>This is expansion panel {{idx}}</p>
-      </mdl-expansion-panel-body>
+      <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
+        <mdl-expansion-panel-body>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
+              NAME:
+            </div>
+            <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="coffeeName"
+                placeholder={{coffee.name}}
+                required
+                ngModel name="name">
+            </div>
+            <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
+              TYPE:
+            </div>
+            <div class="input-areas mdl-cell mdl-cell--11-col">
+              <mdl-select
+                placeholder={{coffee.type}}
+                required
+                ngModel name="type">
+                <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
+              </mdl-select>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+              DISPLAY TEXT:
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
+                placeholder={{coffee.displayText}}
+                required
+                ngModel name="displayText">
+            </div>
+          </div>
+        </mdl-expansion-panel-body>
+        <mdl-expansion-panel-footer>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            type="submit"
+            [disabled]="!coffeeForm.form.valid">
+            Save
+          </button>
+          <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            (click)="deleteCoffee(idx)">
+            Delete
+          </a>
+        </mdl-expansion-panel-footer>
+      </form>
 
-      <mdl-expansion-panel-footer>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          >
-          Save
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          (click)="deleteFromList()">
-          Delete
-        </button>
-      </mdl-expansion-panel-footer>
     </mdl-expansion-panel-content>
 
   </mdl-expansion-panel>
