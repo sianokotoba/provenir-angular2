@@ -1,9 +1,25 @@
-<div class="flexcontainer" *ngFor="let coffee of coffees">
-  <div class="flex50">
-    <img src={{coffee.imgURL}} />
-    {{coffee.name}}
-    {{coffee.type}}
-    {{coffee.displayText}}
-    <hr />
+<div class="center-align">
+
+</div>
+<div class="flexcontainer">
+  <div class="flex1 vertical-container">
+    <div>
+      <h3>Coffee Bonanza</h3>
+    </div>
+  </div>
+  <div style="border-left:1px solid #757575;height:151px"></div>
+  <div class="flex2 vertical-container">
+    <img class="coffee-banner" src="../assets/coffee-legend.png" />
+  </div>
+</div>
+<hr />
+<div class="flexcontainer flex-wrap center-align">
+  <div *ngFor="let coffee of coffees">
+    <div class="initial">
+      <img class="img-center" src={{coffee.imgURL}} />
+      <h6>NAME: {{coffee.name}}</h6>
+      <h6>TYPE: {{coffee.type}}</h6>
+      <h6>TEXT: {{coffee.displayText}}</h6>
+    </div>
   </div>
 </div>
