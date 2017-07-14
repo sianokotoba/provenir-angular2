@@ -5,7 +5,8 @@ import { Coffee } from './coffee';
 @Component({
   selector: 'coffee-form',
   templateUrl: './coffee-form.component.html',
-  styles: [ "../node_modules/@angular2-mdl-ext/select/select.scss" ]
+  styleUrls: ['./coffee-form.component.css']
+  // styles: [ "../node_modules/@angular2-mdl-ext/select/select.scss" ]
 })
 
 export class CoffeeFormComponent {

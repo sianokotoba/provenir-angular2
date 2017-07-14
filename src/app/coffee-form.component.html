@@ -5,33 +5,15 @@
         <input class="mdl-textfield__input" type="text" id="coffeeName">
         <label class="mdl-textfield__label" for="coffeeName">Name</label>
       </div>
-      <!-- <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-        <label class="mdl-textfield__label" for="coffeeType">Type</label> -->
-<!-- Select with arrow-->
-<!-- <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-        <input class="mdl-textfield__input" type="text" id="coffeeType" value="" readonly tabIndex="-1">
-        <label for="coffeeType">
-          <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-        </label>
-         <label for="coffeeType" class="mdl-textfield__label">Type</label>
-        <ul for="coffeeType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-          <li class="mdl-menu__item" data-val="SH">Short</li>
-          <li class="mdl-menu__item" data-val="TL">Tall</li>
-          <li class="mdl-menu__item" data-val="GR">Grande</li>
-          <li class="mdl-menu__item" data-val="VT">Venti</li>
-        </ul>
-      </div>
-</div> -->
+
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-        <mdl-select label="Type" floating-label [(ngModel)]="coffeeType">
+        <mdl-select label="Type" floating-label [(ngModel)]="coffeeTypeOption" name="coffeeType">
           <mdl-option>Short</mdl-option>
           <mdl-option>Tall</mdl-option>
           <mdl-option>Grande</mdl-option>
           <mdl-option>Venti</mdl-option>
         </mdl-select>
       </div>
-      <!-- </div> -->
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="coffeeDisplayText">
         <label class="mdl-textfield__label" for="coffeeDisplayText">Display Text</label>
