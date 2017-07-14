@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Coffee } from './coffee';
 import { COFFEES } from './coffee-seed';
-import { updateCoffeeList } from './utils';
 
 @Component({
   selector: 'coffee-dash',
@@ -10,13 +9,6 @@ import { updateCoffeeList } from './utils';
   styleUrls: ['./coffee-dash.component.css']
 })
 
-export class CoffeeDashComponent implements OnInit {
-
+export class CoffeeDashComponent {
   coffees = COFFEES;
-
-  constructor () {}
-
-  ngOnInit() {
-    updateCoffeeList(this.coffees);
-  }
 }

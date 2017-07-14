@@ -27,14 +27,15 @@ export class CoffeeFormComponent {
   submitted = false;
 
   onSubmit(form) {
-    this.coffee = new Coffee(form.value.name, form.value.type, form.value.displayText, '../assets/coffee-default.png');
-    localStorage.setItem(form.value.name, JSON.stringify({
+    let newCoffee = {
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
       imgURL: '../assets/coffee-default.png'
-    }))
-    addToCoffeeList(this.coffees);
+    }
+    this.coffee = new Coffee(form.value.name, form.value.type, form.value.displayText, '../assets/coffee-default.png');
+    localStorage.setItem(form.value.name, JSON.stringify(newCoffee));
+    addToCoffeeList(this.coffees, newCoffee);
     this.submitted = true;
   }
 }
