@@ -37,5 +37,10 @@ export class CoffeeFormComponent {
     localStorage.setItem(form.value.name, JSON.stringify(newCoffee));
     addToCoffeeList(this.coffees, newCoffee);
     this.submitted = true;
+    form.reset();
+  }
+
+  newSubmission() {
+    this.submitted = false;
   }
 }

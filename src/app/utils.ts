@@ -7,7 +7,6 @@ export const checkLocalStorage = (coffeeList) => {
   }
 }
 
-
 export const updateCoffeeList = (coffeeList, idx, editedCoffee) => {
   console.log('updating now')
   coffeeList[idx] = editedCoffee;
