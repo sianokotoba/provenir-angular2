@@ -16,3 +16,7 @@ export const addToCoffeeList = (coffeeList, newCoffee) => {
   console.log('adding now')
   coffeeList.push(newCoffee);
 }
+
+export const deleteFromList = (coffeeList) => {
+
+}
