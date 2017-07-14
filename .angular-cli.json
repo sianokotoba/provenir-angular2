@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "../node_modules/@angular2-mdl-ext/select/select.scss",
-        "../node_modules/@angular2-mdl-ext/popover/popover.scss"
+        "../node_modules/@angular2-mdl-ext/popover/popover.scss",
+        "../node_modules/@angular2-mdl-ext/expansion-panel/expansion-panel.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
