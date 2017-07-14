@@ -1,49 +1,47 @@
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Display Text</th>
-      <th>Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <div>
-      hello
-    </div>
-    <tr *ngFor="let coffee of coffees">
-      <mdl-expansion-panel-group #panelGroup>
-            <mdl-expansion-panel>
-              <mdl-expansion-panel-header>
-                <mdl-expansion-panel-header-list-content>
-                  <td>{{coffee.name}}</td>
-                  <td>{{coffee.type}}</td>
-                  <td>{{coffee.displayText}}</td>
-                </mdl-expansion-panel-header-list-content>
-              </mdl-expansion-panel-header>
+<div class="flexcontainer">
+  <div class="flex1">
+    Name
+  </div>
+  <div class="flex1">
+    Type
+  </div>
+  <div class="flex2" style="z-index:-1">
+    Display Text
+  </div>
+</div>
 
-              <mdl-expansion-panel-content>
-                <mdl-expansion-panel-body>
-                  <p>This is expansion panel {{i}}</p>
-                </mdl-expansion-panel-body>
+<mdl-expansion-panel-group #panelGroup>
+  <mdl-expansion-panel *ngFor="let coffee of coffees">
+    <mdl-expansion-panel-header>
+      <mdl-expansion-panel-header-list-content>
+        <div class="flexcontainer">
+          <div class="flex1">{{coffee.name}}</div>
+          <div class="flex1">{{coffee.type}}</div>
+          <div class="flex2">{{coffee.displayText}}</div>
+        </div>
+      </mdl-expansion-panel-header-list-content>
+    </mdl-expansion-panel-header>
 
-                <mdl-expansion-panel-footer>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                    >
-                    Cancel
-                  </button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                    >
-                    Save
-                  </button>
-                </mdl-expansion-panel-footer>
-              </mdl-expansion-panel-content>
+    <mdl-expansion-panel-content>
+      <mdl-expansion-panel-body>
+        <p>This is expansion panel {{i}}</p>
+      </mdl-expansion-panel-body>
 
-            </mdl-expansion-panel>
-      </mdl-expansion-panel-group>
-    </tr>
-  </tbody>
-</table>
+      <mdl-expansion-panel-footer>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          >
+          Cancel
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          >
+          Save
+        </button>
+      </mdl-expansion-panel-footer>
+    </mdl-expansion-panel-content>
+
+  </mdl-expansion-panel>
+</mdl-expansion-panel-group>
+
 
 
 
