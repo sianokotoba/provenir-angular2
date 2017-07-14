@@ -1,29 +1,38 @@
 <!-- <div class="mdl-grid"> -->
-  <form action="#">
+  <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="coffeeName">
+        <input class="mdl-textfield__input" type="text" id="coffeeName"
+          required
+          [(ngModel)]="coffee.name" name="name">
         <label class="mdl-textfield__label" for="coffeeName">Name</label>
       </div>
 
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-        <mdl-select label="Type" floating-label [(ngModel)]="coffeeTypeOption" name="coffeeType">
-          <mdl-option>Short</mdl-option>
-          <mdl-option>Tall</mdl-option>
-          <mdl-option>Grande</mdl-option>
-          <mdl-option>Venti</mdl-option>
+        <mdl-select label="Type" floating-label
+          required
+          [(ngModel)]="coffee.type" name="type">
+          <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
         </mdl-select>
       </div>
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="coffeeDisplayText">
+        <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
+          required
+          [(ngModel)]="coffee.displayText" name="displayText">
         <label class="mdl-textfield__label" for="coffeeDisplayText">Display Text</label>
       </div>
       <!-- Accent-colored raised button with ripple -->
       <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          type="submit">
           Submit
         </button>
       </div>
     </div>
   </form>
 <!-- </div> -->
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>

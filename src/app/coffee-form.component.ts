@@ -11,15 +11,29 @@ import { Coffee } from './coffee';
 
 export class CoffeeFormComponent {
 
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
+  types = [
+    'Hot',
+    'Iced',
+    'Decaf',
+    'Party Time'
+  ];
 
-  model = new Coffee('test1', 'test2', 'test3');
+  coffee = new Coffee('test1', 'test2', 'test3', 'test4');
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit(form) {
+    this.submitted = true;
+    console.log('~~~~~~~~', form.value)
+    console.log('hfjkhfkdjhajkf', localStorage)
+  }
 
   // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  get diagnostic() { return JSON.stringify(this.coffee); }
+
+  createNewCoffee(form) {
+    console.log('~~~~~~~~', form.value)
+    console.log('hfjkhfkdjhajkf', localStorage)
+  }
+
 }
