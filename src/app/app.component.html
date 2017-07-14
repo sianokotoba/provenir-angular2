@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>{{title}}</h1>
+
+
+<h2>Existing Cups</h2>
+<ul class="coffees">
+  <li *ngFor="let coffee of coffees"
+    [class.selected]="coffee === selectedCoffee"
+    (click)="onSelect(coffee)">
+    <!-- each hero goes here -->
+    <span class="badge">{{coffee.type}}:</span> {{coffee.name}}
+  </li>
+</ul>
+<div *ngIf="selectedCoffee">
+  <h2>{{selectedCoffee.name}} details!</h2>
+  <div><label>id: </label>{{selectedCoffee.type}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="selectedCoffee.name" placeholder="name">
+  </div>
+</div>
+
+<coffee-form></coffee-form>
