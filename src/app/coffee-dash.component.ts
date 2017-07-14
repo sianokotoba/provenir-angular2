@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Coffee } from './coffee';
 import { COFFEES } from './coffee-seed';
-import { checkLocalStorage } from './utils';
+import { updateCoffeeList } from './utils';
 
 @Component({
   selector: 'coffee-dash',
@@ -17,6 +17,6 @@ export class CoffeeDashComponent implements OnInit {
   constructor () {}
 
   ngOnInit() {
-    checkLocalStorage(this.coffees);
+    updateCoffeeList(this.coffees);
   }
 }
