@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { COFFEES } from './coffee-seed';
 import { checkLocalStorage } from './utils';
-
 
 
 @Component({
@@ -16,18 +14,18 @@ import { checkLocalStorage } from './utils';
 export class AppComponent implements OnInit {
   constructor(private coffeeService: CoffeeService) { }
 
-  coffees = COFFEES;
+  coffees = [];
 
   ngOnInit() {
     // Check local storage on init for correct cofee list
     this.getCoffees();
-    checkLocalStorage(this.coffees);
   }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
       .then(coffees => {
         this.coffees = coffees;
+        checkLocalStorage(this.coffees);
       })
   }
 }

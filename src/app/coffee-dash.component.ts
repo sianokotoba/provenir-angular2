@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { COFFEES } from './coffee-seed';
 
 @Component({
   selector: 'coffee-dash',
@@ -10,5 +10,5 @@ import { COFFEES } from './coffee-seed';
 })
 
 export class CoffeeDashComponent {
-  coffees = COFFEES;
+  @Input() coffees;
 }

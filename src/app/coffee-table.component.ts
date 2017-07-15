@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { COFFEES } from './coffee-seed';
 import { deleteFromList, updateCoffeeList, checkLocalStorage } from './utils';
 
 @Component({
@@ -11,7 +11,9 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage } from './utils';
 })
 
 export class CoffeeTableComponent {
-  coffees = COFFEES;
+  @Input() coffees;
+
+  // coffees = COFFEES;
   types = [
     'Hot',
     'Iced',
@@ -38,4 +40,13 @@ export class CoffeeTableComponent {
     }
     updateCoffeeList(this.coffees, idx, editedCoffee)
   }
+
+//   delete(hero: Hero): void {
+//   this.heroService
+//       .delete(hero.id)
+//       .then(() => {
+//         this.heroes = this.heroes.filter(h => h !== hero);
+//         if (this.selectedHero === hero) { this.selectedHero = null; }
+//       });
+// }
 }

@@ -26,6 +26,7 @@
     "@angular2-mdl-ext/expansion-panel": "0.0.1",
     "@angular2-mdl-ext/popover": "^0.6.0",
     "@angular2-mdl-ext/select": "^0.10.3",
+    "angular-in-memory-web-api": "^0.3.2",
     "angular2-mdl": "^2.13.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
