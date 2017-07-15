@@ -37,7 +37,7 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeName"
-                placeholder={{coffee.name}}
+                value={{coffee.name}}
                 required
                 ngModel name="name">
             </div>
@@ -65,13 +65,17 @@
         </mdl-expansion-panel-body>
         <mdl-expansion-panel-footer>
           <div class="btn-space">
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+              (click)="panelGroup.getPanel(idx).collapse()">
+              Cancel
+            </a>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
               type="submit"
               [disabled]="!coffeeForm.form.valid">
               Save
             </button>
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-              (click)="deleteCoffee(coffee.id)">
+              (click)="panelGroup.getPanel(idx).collapse(); deleteCoffee(coffee.id, panelGroup, idx)">
               Delete
             </a>
           </div>

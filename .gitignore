@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+!/node_modules/@angular2-mdl-ext/popover/popover.js/**
 
 # IDEs and editors
 /.idea
