@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
@@ -13,7 +13,10 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
 export class CoffeeTableComponent {
   @Input() coffees;
 
-  constructor(private coffeeService: CoffeeService) { }
+  constructor(
+    private coffeeService: CoffeeService,
+    public zone: NgZone
+  ) { }
 
   types = [
     'Hot',
@@ -31,13 +34,9 @@ export class CoffeeTableComponent {
 
   deleteCoffee(coffeeId: number): void {
     this.coffeeService.delete(coffeeId)
-      .then(() => {
-        deleteFromList(this.coffees, coffeeId);
-        window.location.reload();
-        buildCoffeeListOnReload(this.coffees);
-      })
-      .then(() => {
-        // this.getCoffees();
+      .then((res) => {
+        console.log("HERHERE", res)
+        this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
       })
   }
 
@@ -53,11 +52,7 @@ export class CoffeeTableComponent {
     this.coffeeService.update(editedCoffee)
       .then(coffee => {
         console.log("COFFEEEEE", coffee)
-        updateCoffeeList(this.coffees, coffeeId, coffee);
-      })
-      .then(() => {
-        console.log("HIT?")
-        this.getCoffees();
+        this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
       })
   }
 
