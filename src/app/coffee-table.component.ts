@@ -32,10 +32,16 @@ export class CoffeeTableComponent {
       })
   }
 
-  deleteCoffee(coffeeId: number): void {
+  deleteCoffee(coffeeId: number, panelGroup: any, idx: number): void {
+    console.log("what is panel group?", panelGroup.getPanel(idx))
+    console.log("tester")
+    // panelGroup.getPanel(idx).collapse()
+    // panelGroup.getPanel(idx).header.onChange.isStopped = true
+    // panelGroup.getPanel(idx).removeListener('onChange', panelGroup.getPanel(idx).header.onChange, false);
+    console.log("delete called, initializing", this.coffees)
     this.coffeeService.delete(coffeeId)
       .then((res) => {
-        console.log("HERHERE", res)
+        console.log("HERHERE", this.coffees)
         this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
       })
   }
