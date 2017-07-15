@@ -16,7 +16,6 @@ export class CoffeeFormComponent {
   constructor(private coffeeService: CoffeeService) { }
 
   coffee = {};
-  // coffees = [];
   submitted = false;
   types = [
     'Hot',
@@ -26,9 +25,10 @@ export class CoffeeFormComponent {
   ];
 
   onSubmit(form) {
-    console.log('THIS COFFE??', this.coffees)
+    console.log('THIS COFFE??', this.coffees[this.coffees.length  - 1].id)
+    console.log('~~~~', this.coffees)
     let newCoffee = {
-      // id:
+      id: this.coffees[this.coffees.length  - 1].id + 1,
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
@@ -36,7 +36,7 @@ export class CoffeeFormComponent {
     }
     this.coffee = newCoffee;
     localStorage.setItem(form.value.name, JSON.stringify(newCoffee));
-    addToCoffeeList(this.coffees, newCoffee);
+    this.add(newCoffee);
     this.submitted = true;
     form.reset();
   }

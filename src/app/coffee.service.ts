@@ -29,13 +29,13 @@ export class CoffeeService {
     return this.http
       .put(url, JSON.stringify(coffee), {headers: this.headers})
       .toPromise()
-      .then(() => coffee)
+      .then(() => coffee as Coffee)
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Coffee> {
+  create(newCoffee: any): Promise<Coffee> {
     return this.http
-      .post(this.coffeeURL, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.coffeeURL, JSON.stringify(newCoffee), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Coffee)
       .catch(this.handleError);

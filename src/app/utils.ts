@@ -7,10 +7,14 @@ export const checkLocalStorage = (coffeeList) => {
   }
 }
 
-export const updateCoffeeList = (coffeeList, idx, editedCoffee) => {
+export const updateCoffeeList = (coffeeList, id, editedCoffee) => {
   console.log('updating now')
-  coffeeList[idx] = editedCoffee;
-  updateLocalStorage(coffeeList[idx].name, editedCoffee);
+  for (let i = 0; i < coffeeList.length; i++) {
+    if (coffeeList[i].id === id) {
+      updateLocalStorage(coffeeList[i].name, editedCoffee);
+      coffeeList[i] = editedCoffee;
+    }
+  }
 }
 
 export const updateLocalStorage = (coffeeName, editedCoffee) => {
@@ -26,9 +30,13 @@ export const addToCoffeeList = (coffeeList, newCoffee) => {
   coffeeList.push(newCoffee);
 }
 
-export const deleteFromList = (coffeeList, idx) => {
-  deleteFromLocalStorage(coffeeList[idx].name);
-  coffeeList.splice(idx, 1);
+export const deleteFromList = (coffeeList, id) => {
+  for (let i = 0; i < coffeeList.length; i++) {
+    if (coffeeList[i].id === id) {
+      deleteFromLocalStorage(coffeeList[i].name);
+      coffeeList.splice(i, 1);
+    }
+  }
 }
 
 export const deleteFromLocalStorage = (coffeeName) => {

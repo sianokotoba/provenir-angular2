@@ -13,7 +13,8 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage } from './utils';
 export class CoffeeTableComponent {
   @Input() coffees;
 
-  // coffees = COFFEES;
+  constructor(private coffeeService: CoffeeService) { }
+
   types = [
     'Hot',
     'Iced',
@@ -21,24 +22,32 @@ export class CoffeeTableComponent {
     'Party Time'
   ];
 
-  // build service to handle delete and idx updating correctly?
-  deleteCoffee(idx) {
-    console.log('triggers', idx)
-    deleteFromList(this.coffees, idx);
-    this.coffees = this.coffees;
-    console.log('~~~', this.coffees)
-
+  deleteCoffee(coffeeId: number): void {
+    this.coffeeService.delete(coffeeId)
+      .then(() => {
+        deleteFromList(this.coffees, coffeeId);
+        return this.coffeeService.getCoffees();
+      })
   }
 
-  updateCoffee(form, idx) {
-    console.log('FORM', form, idx)
+  updateCoffee(form, coffeeId) {
     let editedCoffee = {
+      id: coffeeId,
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
-      imgURL: '../assets/coffee-default.png'
+      imgURL: this.coffees[coffeeId].imgURL
     }
-    updateCoffeeList(this.coffees, idx, editedCoffee)
+
+    this.coffeeService.update(editedCoffee)
+      .then(coffee => {
+        console.log("COFFEEEEE", coffee)
+        updateCoffeeList(this.coffees, coffeeId, coffee);
+      })
+      .then(() => {
+        console.log("HIT?")
+        return this.coffeeService.getCoffees();
+      })
   }
 
 //   delete(hero: Hero): void {

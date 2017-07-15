@@ -29,7 +29,7 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form #coffeeForm="ngForm" (ngSubmit)="updateCoffee(coffeeForm, idx)">
+      <form #coffeeForm="ngForm" (ngSubmit)="updateCoffee(coffeeForm, coffee.id)">
         <mdl-expansion-panel-body>
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -71,7 +71,7 @@
               Save
             </button>
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-              (click)="deleteCoffee(idx)">
+              (click)="deleteCoffee(coffee.id)">
               Delete
             </a>
           </div>
