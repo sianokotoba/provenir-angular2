@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { checkLocalStorage } from './utils';
+import { addToLocalStorage, checkLocalStorage } from './utils';
+
 
 
 @Component({
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
       .then(coffees => {
         this.coffees = coffees;
         checkLocalStorage(this.coffees);
+        addToLocalStorage(this.coffees);
       })
   }
 }

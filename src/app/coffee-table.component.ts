@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { deleteFromList, updateCoffeeList, checkLocalStorage } from './utils';
+import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnReload } from './utils';
 
 @Component({
   selector: 'coffee-table',
@@ -22,11 +22,22 @@ export class CoffeeTableComponent {
     'Party Time'
   ];
 
+  getCoffees(): void {
+    this.coffeeService.getCoffees()
+      .then(coffees => {
+        this.coffees = coffees;
+      })
+  }
+
   deleteCoffee(coffeeId: number): void {
     this.coffeeService.delete(coffeeId)
       .then(() => {
         deleteFromList(this.coffees, coffeeId);
-        return this.coffeeService.getCoffees();
+        window.location.reload();
+        buildCoffeeListOnReload(this.coffees);
+      })
+      .then(() => {
+        // this.getCoffees();
       })
   }
 
@@ -46,7 +57,7 @@ export class CoffeeTableComponent {
       })
       .then(() => {
         console.log("HIT?")
-        return this.coffeeService.getCoffees();
+        this.getCoffees();
       })
   }
 
