@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { CoffeeFormComponent } from './coffee-form.component';
 import { CoffeeTableComponent } from './coffee-table.component';
 import { CoffeeDashComponent } from './coffee-dash.component';
+import { CoffeeService } from './coffee.service';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { CoffeeDashComponent } from './coffee-dash.component';
   exports: [
     MaterialModule
   ],
-  providers: [],
+  providers: [ CoffeeService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
