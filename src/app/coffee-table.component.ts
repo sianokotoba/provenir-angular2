@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
+import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { COFFEES } from './coffee-seed';
-import { deleteFromList } from './utils';
+import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnReload } from './utils';
 
 @Component({
   selector: 'coffee-table',
@@ -11,7 +11,13 @@ import { deleteFromList } from './utils';
 })
 
 export class CoffeeTableComponent {
-  coffees = COFFEES;
+  @Input() coffees;
+
+  constructor(
+    private coffeeService: CoffeeService,
+    public zone: NgZone
+  ) { }
+
   types = [
     'Hot',
     'Iced',
@@ -19,11 +25,43 @@ export class CoffeeTableComponent {
     'Party Time'
   ];
 
-  // build service to handle delete and idx updating correctly?
-  deleteCoffee(idx) {
-    console.log('triggers', idx)
-    deleteFromList(this.coffees, idx);
-
-    console.log('~~~', this.coffees)
+  getCoffees(): void {
+    this.coffeeService.getCoffees()
+      .then(coffees => {
+        this.coffees = coffees;
+      })
   }
+
+  deleteCoffee(coffeeId: number): void {
+    this.coffeeService.delete(coffeeId)
+      .then((res) => {
+        console.log("HERHERE", res)
+        this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
+      })
+  }
+
+  updateCoffee(form, coffeeId) {
+    let editedCoffee = {
+      id: coffeeId,
+      name: form.value.name,
+      type: form.value.type,
+      displayText: form.value.displayText,
+      imgURL: this.coffees[coffeeId].imgURL
+    }
+
+    this.coffeeService.update(editedCoffee)
+      .then(coffee => {
+        console.log("COFFEEEEE", coffee)
+        this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
+      })
+  }
+
+//   delete(hero: Hero): void {
+//   this.heroService
+//       .delete(hero.id)
+//       .then(() => {
+//         this.heroes = this.heroes.filter(h => h !== hero);
+//         if (this.selectedHero === hero) { this.selectedHero = null; }
+//       });
+// }
 }
