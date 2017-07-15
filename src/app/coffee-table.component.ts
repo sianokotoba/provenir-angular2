@@ -31,9 +31,15 @@ export class CoffeeTableComponent implements AfterViewChecked {
   ngAfterViewChecked() {
     console.log('this COFFEEEEE', this.coffees)
 
+    // this.coffeeTForm = new FormGroup({
+    //   name: new FormControl(),
+    //   type: new FormControl(),
+    //   displayText: new FormControl()
+    // });
+
     this.coffeeTForm = this._fb.group({
       subFormList: this._fb.array([])
-    });
+    })
     this.getValues();
   }
 
@@ -44,8 +50,7 @@ export class CoffeeTableComponent implements AfterViewChecked {
         name: [this.coffees[i].name],
         type: [this.coffees[i].type],
         displayText: [this.coffees[i].displayText]
-      })
-      console.log('temp')
+      });
       control.push(temp);
     }
   }

@@ -29,7 +29,7 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id)">
+      <form formArray="subFormList" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id)">
         <mdl-expansion-panel-body>
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
