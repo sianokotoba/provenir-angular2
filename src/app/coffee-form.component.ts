@@ -25,8 +25,6 @@ export class CoffeeFormComponent {
   ];
 
   onSubmit(form) {
-    console.log('THIS COFFE??', this.coffees[this.coffees.length  - 1].id)
-    console.log('~~~~', this.coffees)
     let newCoffee = {
       id: this.coffees[this.coffees.length  - 1].id + 1,
       name: form.value.name,

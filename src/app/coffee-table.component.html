@@ -29,16 +29,15 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form #coffeeForm="ngForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeForm, coffee.id, idx)">
-        <mdl-expansion-panel-body>
-          <div class="mdl-grid">
+      <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id)">
+        <mdl-expansion-panel-body formArrayName="subFormList">
+          <div class="mdl-grid" *ngFor="let item of subFormList; let i = index">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
               NAME:
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeName"
-                placeholder={{coffee.name}}
-                required
+                formControlName="item"
                 ngModel name="name">
             </div>
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -46,8 +45,7 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col">
               <mdl-select
-                placeholder={{coffee.type}}
-                required
+                formControlName="item[i].type"
                 ngModel name="type">
                 <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
               </mdl-select>
@@ -57,8 +55,7 @@
             </div>
             <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
-                placeholder={{coffee.displayText}}
-                required
+                formControlName="item[i].displayText"
                 ngModel name="displayText">
             </div>
           </div>
@@ -70,8 +67,7 @@
               Cancel
             </a>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-              type="submit"
-              [disabled]="!coffeeForm.form.valid">
+              type="submit">
               Save
             </button>
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
@@ -85,7 +81,6 @@
     </mdl-expansion-panel-content>
   </mdl-expansion-panel>
 </mdl-expansion-panel-group>
-
 
 
 

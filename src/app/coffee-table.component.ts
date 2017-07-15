@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, AfterViewChecked } from '@angular/core';
+import { Component, Input, NgZone, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators }   from '@angular/forms';
 import { CoffeeService } from './coffee.service';
 
@@ -11,9 +11,9 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
   styleUrls: ['./coffee-table.component.css']
 })
 
-export class CoffeeTableComponent {
+export class CoffeeTableComponent implements DoCheck {
   @Input() coffees;
-  // public coffeeTForm: FormGroup;
+  public coffeeTForm: FormGroup;
 
   constructor(
     private coffeeService: CoffeeService,
@@ -22,38 +22,50 @@ export class CoffeeTableComponent {
   ) { }
 
   types = [
-    'Hot', 
+    'Hot',
     'Iced',
     'Decaf',
     'Party Time'
   ];
 
-  // ngAfterViewChecked() {
-  //   console.log('this COFFEEEEE', this.coffees)
 
-  //   // this.coffeeTForm = new FormGroup({
-  //   //   name: new FormControl(),
-  //   //   type: new FormControl(),
-  //   //   displayText: new FormControl()
-  //   // });
 
-  //   this.coffeeTForm = this._fb.group({
-  //     subFormList: this._fb.array([])
-  //   })
-  //   this.getValues();
-  // }
+  ngDoCheck() {
 
-  // getValues() {
-  //   const control = <FormArray> this.coffeeTForm.get('subFormList');
-  //   for (let i = 0; i < this.coffees.length; i++) {
-  //     const temp = this._fb.group({
-  //       name: [this.coffees[i].name],
-  //       type: [this.coffees[i].type],
-  //       displayText: [this.coffees[i].displayText]
-  //     });
-  //     control.push(temp);
-  //   }
-  // }
+
+    // this.coffeeTForm = new FormGroup({
+    //   name: new FormControl(),
+    //   type: new FormControl(),
+    //   displayText: new FormControl()
+    // });
+    // this.coffeeTForm = new FormGroup({
+    //   subFormList: new FormArray([])
+    // });
+    // this.coffeeTForm = this._fb.group({
+    //   subFormList: this._fb.array([])
+    // })
+    this.coffeeTForm = new FormGroup({
+      subFormList: new FormArray([])
+    })
+
+    this.getValues();
+    console.log('!!!!!!', this.coffeeTForm)
+  }
+
+  getValues() {
+    const control = <FormArray> this.coffeeTForm.get('subFormList');
+    console.log("NEFORE CONTROL", control)
+    for (let i = 0; i < this.coffees.length; i++) {
+      console.log('---------------', this.coffees)
+      const temp = this._fb.group({
+        name: [this.coffees[i].name],
+        type: [this.coffees[i].type],
+        displayText: [this.coffees[i].displayText]
+      });
+      control.push(temp);
+    }
+    console.log('~~~~CONTROL', control)
+  }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
@@ -69,18 +81,17 @@ export class CoffeeTableComponent {
       })
   }
 
-  updateCoffee(form, coffeeId, idx) {
+  updateCoffee(form, coffeeId) {
     let editedCoffee = {
       id: coffeeId,
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
-      imgURL: this.coffees[idx].imgURL
+      imgURL: this.coffees[coffeeId].imgURL
     }
 
     this.coffeeService.update(editedCoffee)
       .then(coffee => {
-        console.log("COFFEEEEE", coffee)
         this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
       })
   }
