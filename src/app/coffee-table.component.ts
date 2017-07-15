@@ -1,4 +1,5 @@
-import { Component, Input, NgZone } from '@angular/core';
+import { Component, Input, NgZone, AfterViewChecked } from '@angular/core';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators }   from '@angular/forms';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
@@ -10,20 +11,53 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
   styleUrls: ['./coffee-table.component.css']
 })
 
-export class CoffeeTableComponent {
+export class CoffeeTableComponent implements AfterViewChecked {
   @Input() coffees;
+  public coffeeTForm: FormGroup;
 
   constructor(
     private coffeeService: CoffeeService,
+    private _fb: FormBuilder,
     public zone: NgZone
   ) { }
 
   types = [
-    'Hot',
+    'Hot', 
     'Iced',
     'Decaf',
     'Party Time'
   ];
+
+  ngAfterViewChecked() {
+    console.log('this COFFEEEEE', this.coffees)
+
+    // this.coffeeT
+
+    this.coffeeTForm.patchValue(this.coffees)
+
+    // for (let i = 0; i < this.coffees.length; i++) {
+      // (<FormControl>this.coffeeTForm.controls['name'])
+      //   .patchValue(this.coffees[2]);
+      // (<FormControl>this.coffeeTForm.controls['text'])
+      //   .setValue(this.coffees[2].text);
+      // (<FormControl>this.coffeeTForm.controls['displayText'])
+      //   .setValue(this.coffees[2].displayText);
+        // console.log('here', this.coffees[i])
+    // let i = 0;
+    // while (i < this.coffees.length) {
+      // this.coffeeTForm = this._fb.group({
+      //   name: [this.coffees[0].name],
+      //   type: [this.coffees[0].type],
+      //   displayText: [this.coffees[0].displayText]
+      // })
+      // ++i;
+    // }
+    // }
+    // for (let i = 0; i < this.coffees.length)
+    // })
+
+    console.log('CTF', this._fb.group)
+  }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
@@ -32,16 +66,9 @@ export class CoffeeTableComponent {
       })
   }
 
-  deleteCoffee(coffeeId: number, panelGroup: any, idx: number): void {
-    console.log("what is panel group?", panelGroup.getPanel(idx))
-    console.log("tester")
-    // panelGroup.getPanel(idx).collapse()
-    // panelGroup.getPanel(idx).header.onChange.isStopped = true
-    // panelGroup.getPanel(idx).removeListener('onChange', panelGroup.getPanel(idx).header.onChange, false);
-    console.log("delete called, initializing", this.coffees)
+  deleteCoffee(coffeeId: number): void {
     this.coffeeService.delete(coffeeId)
       .then((res) => {
-        console.log("HERHERE", this.coffees)
         this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
       })
   }
@@ -61,13 +88,4 @@ export class CoffeeTableComponent {
         this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
       })
   }
-
-//   delete(hero: Hero): void {
-//   this.heroService
-//       .delete(hero.id)
-//       .then(() => {
-//         this.heroes = this.heroes.filter(h => h !== hero);
-//         if (this.selectedHero === hero) { this.selectedHero = null; }
-//       });
-// }
 }
