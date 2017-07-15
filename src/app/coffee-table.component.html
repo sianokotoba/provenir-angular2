@@ -29,7 +29,7 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form formArray="subFormList" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id)">
+      <form #coffeeForm="ngForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeForm, coffee.id, idx)">
         <mdl-expansion-panel-body>
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -37,7 +37,8 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeName"
-                formControlName="name"
+                placeholder={{coffee.name}}
+                required
                 ngModel name="name">
             </div>
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -45,7 +46,8 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col">
               <mdl-select
-                formControlName="type"
+                placeholder={{coffee.type}}
+                required
                 ngModel name="type">
                 <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
               </mdl-select>
@@ -55,7 +57,8 @@
             </div>
             <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
-                formControlName="displayText"
+                placeholder={{coffee.displayText}}
+                required
                 ngModel name="displayText">
             </div>
           </div>
@@ -67,7 +70,8 @@
               Cancel
             </a>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-              type="submit">
+              type="submit"
+              [disabled]="!coffeeForm.form.valid">
               Save
             </button>
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
