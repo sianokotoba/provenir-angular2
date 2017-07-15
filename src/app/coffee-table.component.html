@@ -29,7 +29,7 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id)">
+      <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id, idx)">
         <mdl-expansion-panel-body formArrayName="subFormList">
           <div class="mdl-grid" *ngFor="let item of subFormList; let i = index">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -37,7 +37,8 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeName"
-                formControlName="item"
+                formControlName={{subFormList[i]}}
+                [value]={{subFormList[i].name}}
                 ngModel name="name">
             </div>
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -45,7 +46,7 @@
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col">
               <mdl-select
-                formControlName="item[i].type"
+                formControlName={{i}}
                 ngModel name="type">
                 <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
               </mdl-select>
@@ -55,7 +56,7 @@
             </div>
             <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
-                formControlName="item[i].displayText"
+                formControlName={{i}}
                 ngModel name="displayText">
             </div>
           </div>

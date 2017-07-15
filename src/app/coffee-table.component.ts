@@ -57,10 +57,10 @@ export class CoffeeTableComponent implements DoCheck {
     console.log("NEFORE CONTROL", control)
     for (let i = 0; i < this.coffees.length; i++) {
       console.log('---------------', this.coffees)
-      const temp = this._fb.group({
-        name: [this.coffees[i].name],
-        type: [this.coffees[i].type],
-        displayText: [this.coffees[i].displayText]
+      const temp = this._fb.control({
+        name: this.coffees[i].name,
+        type: this.coffees[i].type,
+        displayText: this.coffees[i].displayText
       });
       control.push(temp);
     }
@@ -81,13 +81,13 @@ export class CoffeeTableComponent implements DoCheck {
       })
   }
 
-  updateCoffee(form, coffeeId) {
+  updateCoffee(form, coffeeId, idx) {
     let editedCoffee = {
       id: coffeeId,
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
-      imgURL: this.coffees[coffeeId].imgURL
+      imgURL: this.coffees[idx].imgURL
     }
 
     this.coffeeService.update(editedCoffee)
