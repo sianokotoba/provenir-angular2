@@ -1,5 +1,5 @@
 import { Component, Input, NgZone, AfterViewChecked } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators }   from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators }   from '@angular/forms';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
@@ -31,23 +31,36 @@ export class CoffeeTableComponent implements AfterViewChecked {
   ngAfterViewChecked() {
     console.log('this COFFEEEEE', this.coffees)
 
-    this.coffeeTForm = this._fb.group({
-      subFormList: this._fb.array([])
+    this.coffeeTForm = new FormGroup({
+      name: new FormControl(),
+      type: new FormControl(),
+      displayText: new FormControl()
     });
-    this.getValues();
-  }
 
-  getValues() {
-    const control = <FormArray> this.coffeeTForm.get('subFormList');
-    for (let i = 0; i < this.coffees.length; i++) {
-      const temp = this._fb.group({
-        name: [this.coffees[i].name],
-        type: [this.coffees[i].type],
-        displayText: [this.coffees[i].displayText]
-      })
-      console.log('temp')
-      control.push(temp);
-    }
+    this.coffeeTForm.patchValue(this.coffees)
+
+    // for (let i = 0; i < this.coffees.length; i++) {
+      // (<FormControl>this.coffeeTForm.controls['name'])
+      //   .patchValue(this.coffees[2]);
+      // (<FormControl>this.coffeeTForm.controls['text'])
+      //   .setValue(this.coffees[2].text);
+      // (<FormControl>this.coffeeTForm.controls['displayText'])
+      //   .setValue(this.coffees[2].displayText);
+        // console.log('here', this.coffees[i])
+    // let i = 0;
+    // while (i < this.coffees.length) {
+      // this.coffeeTForm = this._fb.group({
+      //   name: [this.coffees[0].name],
+      //   type: [this.coffees[0].type],
+      //   displayText: [this.coffees[0].displayText]
+      // })
+      // ++i;
+    // }
+    // }
+    // for (let i = 0; i < this.coffees.length)
+    // })
+
+    console.log('CTF', this._fb.group)
   }
 
   getCoffees(): void {
