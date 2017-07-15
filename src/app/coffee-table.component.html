@@ -31,14 +31,13 @@
     <mdl-expansion-panel-content>
       <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id, idx)">
         <mdl-expansion-panel-body formArrayName="subFormList">
-          <div class="mdl-grid" *ngFor="let item of subFormList; let i = index">
+          <div class="mdl-grid" *ngFor="let item of coffeeTForm.controls.subFormList.controls; let i = index">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
               NAME:
             </div>
             <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="coffeeName"
-                formControlName={{subFormList[i]}}
-                [value]={{subFormList[i].name}}
+                formControlName={{i}}
                 ngModel name="name">
             </div>
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
