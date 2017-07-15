@@ -29,7 +29,7 @@
     </mdl-expansion-panel-header>
 
     <mdl-expansion-panel-content>
-      <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
+      <form #coffeeForm="ngForm" (ngSubmit)="updateCoffee(coffeeForm, idx)">
         <mdl-expansion-panel-body>
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
@@ -64,20 +64,21 @@
           </div>
         </mdl-expansion-panel-body>
         <mdl-expansion-panel-footer>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            type="submit"
-            [disabled]="!coffeeForm.form.valid">
-            Save
-          </button>
-          <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            (click)="deleteCoffee(idx)">
-            Delete
-          </a>
+          <div class="btn-space">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+              type="submit"
+              [disabled]="!coffeeForm.form.valid">
+              Save
+            </button>
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+              (click)="deleteCoffee(idx)">
+              Delete
+            </a>
+          </div>
         </mdl-expansion-panel-footer>
       </form>
 
     </mdl-expansion-panel-content>
-
   </mdl-expansion-panel>
 </mdl-expansion-panel-group>
 

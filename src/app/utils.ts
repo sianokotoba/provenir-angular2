@@ -10,6 +10,15 @@ export const checkLocalStorage = (coffeeList) => {
 export const updateCoffeeList = (coffeeList, idx, editedCoffee) => {
   console.log('updating now')
   coffeeList[idx] = editedCoffee;
+  updateLocalStorage(coffeeList[idx].name, editedCoffee);
+}
+
+export const updateLocalStorage = (coffeeName, editedCoffee) => {
+  if (localStorage.length > 0) {
+    if (localStorage.getItem(coffeeName)) {
+      localStorage.setItem(coffeeName, editedCoffee);
+    }
+  }
 }
 
 export const addToCoffeeList = (coffeeList, newCoffee) => {
