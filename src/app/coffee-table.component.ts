@@ -11,9 +11,9 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
   styleUrls: ['./coffee-table.component.css']
 })
 
-export class CoffeeTableComponent implements AfterViewChecked {
+export class CoffeeTableComponent {
   @Input() coffees;
-  public coffeeTForm: FormGroup;
+  // public coffeeTForm: FormGroup;
 
   constructor(
     private coffeeService: CoffeeService,
@@ -28,32 +28,32 @@ export class CoffeeTableComponent implements AfterViewChecked {
     'Party Time'
   ];
 
-  ngAfterViewChecked() {
-    console.log('this COFFEEEEE', this.coffees)
+  // ngAfterViewChecked() {
+  //   console.log('this COFFEEEEE', this.coffees)
 
-    // this.coffeeTForm = new FormGroup({
-    //   name: new FormControl(),
-    //   type: new FormControl(),
-    //   displayText: new FormControl()
-    // });
+  //   // this.coffeeTForm = new FormGroup({
+  //   //   name: new FormControl(),
+  //   //   type: new FormControl(),
+  //   //   displayText: new FormControl()
+  //   // });
 
-    this.coffeeTForm = this._fb.group({
-      subFormList: this._fb.array([])
-    })
-    this.getValues();
-  }
+  //   this.coffeeTForm = this._fb.group({
+  //     subFormList: this._fb.array([])
+  //   })
+  //   this.getValues();
+  // }
 
-  getValues() {
-    const control = <FormArray> this.coffeeTForm.get('subFormList');
-    for (let i = 0; i < this.coffees.length; i++) {
-      const temp = this._fb.group({
-        name: [this.coffees[i].name],
-        type: [this.coffees[i].type],
-        displayText: [this.coffees[i].displayText]
-      });
-      control.push(temp);
-    }
-  }
+  // getValues() {
+  //   const control = <FormArray> this.coffeeTForm.get('subFormList');
+  //   for (let i = 0; i < this.coffees.length; i++) {
+  //     const temp = this._fb.group({
+  //       name: [this.coffees[i].name],
+  //       type: [this.coffees[i].type],
+  //       displayText: [this.coffees[i].displayText]
+  //     });
+  //     control.push(temp);
+  //   }
+  // }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
@@ -69,13 +69,13 @@ export class CoffeeTableComponent implements AfterViewChecked {
       })
   }
 
-  updateCoffee(form, coffeeId) {
+  updateCoffee(form, coffeeId, idx) {
     let editedCoffee = {
       id: coffeeId,
       name: form.value.name,
       type: form.value.type,
       displayText: form.value.displayText,
-      imgURL: this.coffees[coffeeId].imgURL
+      imgURL: this.coffees[idx].imgURL
     }
 
     this.coffeeService.update(editedCoffee)
