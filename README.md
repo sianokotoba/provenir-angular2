@@ -10,11 +10,14 @@ npm install
 This will install all runtime dependencies.
 
 NOTE: An mdl library used needed to be revised for proper functionality.
-File location: ../node_modules/@angular2-mdl-ext/popover/popover.js
-File revision: Line 29
-Function revised: MDLPopoverComponent.prototype.ngOnDestroy
+- File location: ../node_modules/@angular2-mdl-ext/popover/popover.js
+- File revision: Line 29
+- Function revised: MDLPopoverComponent.prototype.ngOnDestroy
+
+Revised coded is as follows:
 
 ```sh
+// Replace in file, starting line 29
 MdlPopoverComponent.prototype.ngOnDestroy = function () {
     // Added second argument 'this.hide' to removeEventListener to cancel browser error on deletion
     this.elementRef.nativeElement.removeEventListener('hide', this.hide);
