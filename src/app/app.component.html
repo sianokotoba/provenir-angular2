@@ -2,8 +2,8 @@
             mdl-layout--fixed-tabs">
   <header class="mdl-layout__header">
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      <a href="#fixed-tab-1" class="mdl-layout__tab">Form</a>
-      <a href="#fixed-tab-2" class="mdl-layout__tab is-active">Table</a>
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Form</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Table</a>
       <a href="#fixed-tab-3" class="mdl-layout__tab">Dashboard</a>
     </div>
   </header>
@@ -12,12 +12,12 @@
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--2-col"></div>
       <div class="mdl-cell mdl-cell--8-col">
-        <section class="mdl-layout__tab-panel" id="fixed-tab-1">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
           <div class="page-content">
             <coffee-form [coffees]=coffees></coffee-form>
           </div>
         </section>
-        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-2">
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
           <div class="page-content">
             <coffee-table [coffees]=coffees></coffee-table>
           </div>
