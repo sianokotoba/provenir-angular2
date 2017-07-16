@@ -1,9 +1,9 @@
-import { Component, Input, NgZone, DoCheck } from '@angular/core';
+import { Component, Input, NgZone, OnInit, DoCheck, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators }   from '@angular/forms';
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnReload } from './utils';
+import { deleteFromList, updateCoffeeList, addToLocalStorage, checkLocalStorage, buildCoffeeListOnReload } from './utils';
 
 @Component({
   selector: 'coffee-table',
@@ -11,7 +11,7 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
   styleUrls: ['./coffee-table.component.css']
 })
 
-export class CoffeeTableComponent implements DoCheck {
+export class CoffeeTableComponent implements OnInit, OnChanges, DoCheck {
   @Input() coffees;
   public coffeeTForm: FormGroup;
 
@@ -19,7 +19,12 @@ export class CoffeeTableComponent implements DoCheck {
     private coffeeService: CoffeeService,
     private _fb: FormBuilder,
     public zone: NgZone
-  ) { }
+  ) {
+    this.coffeeTForm = new FormGroup({
+      subFormList: new FormArray([])
+    })
+    this.getValues();
+  }
 
   types = [
     'Hot',
@@ -28,51 +33,55 @@ export class CoffeeTableComponent implements DoCheck {
     'Party Time'
   ];
 
+  ngOnInit() {
+  // Check local storage on init for correct cofee list
+  console.log("THHREWJLRKFAWE", this.coffees)
+    // this.getCoffees();
 
-
-  ngDoCheck() {
-
-
-    // this.coffeeTForm = new FormGroup({
-    //   name: new FormControl(),
-    //   type: new FormControl(),
-    //   displayText: new FormControl()
-    // });
     // this.coffeeTForm = new FormGroup({
     //   subFormList: new FormArray([])
-    // });
-    // this.coffeeTForm = this._fb.group({
-    //   subFormList: this._fb.array([])
     // })
-    this.coffeeTForm = new FormGroup({
-      subFormList: new FormArray([])
-    })
+    // this.getValues();
 
-    this.getValues();
     console.log('!!!!!!', this.coffeeTForm)
-  }
-
-  getValues() {
-    const control = <FormArray> this.coffeeTForm.get('subFormList');
-    console.log("NEFORE CONTROL", control)
-    for (let i = 0; i < this.coffees.length; i++) {
-      console.log('---------------', this.coffees)
-      const temp = this._fb.control({
-        name: this.coffees[i].name,
-        type: this.coffees[i].type,
-        displayText: this.coffees[i].displayText
-      });
-      control.push(temp);
-    }
-    console.log('~~~~CONTROL', control)
   }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
       .then(coffees => {
         this.coffees = coffees;
+        addToLocalStorage(this.coffees);
+        checkLocalStorage(this.coffees);
       })
   }
+
+  ngOnChanges() {
+  }
+
+  ngDoCheck() {
+
+  }
+
+  getValues() {
+    const control = <FormArray> this.coffeeTForm.get('subFormList');
+    if (this.coffees.length === 0) {
+      control.push(this._fb.group({
+        name: '',
+        type: '',
+        displayText: ''
+      }))
+    }
+    for (let i = 0; i < this.coffees.length; i++) {
+      const temp = this._fb.group({
+        name: '' || this.coffees[i].name,
+        type: '' || this.coffees[i].type,
+        displayText: '' || this.coffees[i].displayText
+      });
+      control.push(temp);
+    }
+  }
+
+
 
   deleteCoffee(coffeeId: number): void {
     this.coffeeService.delete(coffeeId)

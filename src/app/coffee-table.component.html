@@ -31,32 +31,34 @@
     <mdl-expansion-panel-content>
       <form [formGroup]="coffeeTForm" (ngSubmit)="panelGroup.getPanel(idx).collapse(); updateCoffee(coffeeTForm, coffee.id, idx)">
         <mdl-expansion-panel-body formArrayName="subFormList">
-          <div class="mdl-grid" *ngFor="let item of coffeeTForm.controls.subFormList.controls; let i = index">
-            <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
-              NAME:
-            </div>
-            <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="coffeeName"
-                formControlName={{i}}
-                ngModel name="name">
-            </div>
-            <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
-              TYPE:
-            </div>
-            <div class="input-areas mdl-cell mdl-cell--11-col">
-              <mdl-select
-                formControlName={{i}}
-                ngModel name="type">
-                <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
-              </mdl-select>
-            </div>
-            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
-              DISPLAY TEXT:
-            </div>
-            <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
-                formControlName={{i}}
-                ngModel name="displayText">
+          <div class="mdl-grid" *ngFor="let fgItem of subFormList; let i = index">
+            <div formGroupName="{{i}}">
+              <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
+                NAME:
+              </div>
+              <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="coffeeName"
+                  formControlName="name"
+                  ngModel name="name">
+              </div>
+              <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
+                TYPE:
+              </div>
+              <div class="input-areas mdl-cell mdl-cell--11-col">
+                <mdl-select
+                  formControlName="type"
+                  ngModel name="type">
+                  <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
+                </mdl-select>
+              </div>
+              <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+                DISPLAY TEXT:
+              </div>
+              <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
+                  formControlName="displayText"
+                  ngModel name="displayText">
+              </div>
             </div>
           </div>
         </mdl-expansion-panel-body>
