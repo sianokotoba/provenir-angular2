@@ -1,14 +1,12 @@
 export const checkLocalStorage = (coffeeList) => {
-  if (localStorage.length > 0) {
-    for (let key in localStorage) {
-      for (let i = 0; i < coffeeList.length; i++) {
-        if (key === coffeeList[i].id) {
-          break;
-        }
-        if (key !== coffeeList[i].id && i === coffeeList.length - 1) {
-          coffeeList.push(JSON.parse(localStorage.getItem(key)));
-        }
-      }
+  let coffeeLegend = {};
+  for (let i = 0; i < coffeeList.length; i++) {
+    coffeeLegend[coffeeList[i].id] = true;
+  }
+
+  for (let key in localStorage) {
+    if (!coffeeLegend[key]) {
+      coffeeList.push(JSON.parse(localStorage.getItem(key)));
     }
   }
 }
@@ -33,7 +31,7 @@ export const updateCoffeeList = (coffeeList, id, editedCoffee) => {
 export const updateLocalStorage = (coffeeId, editedCoffee) => {
   if (localStorage.length > 0) {
     if (localStorage.getItem(coffeeId)) {
-      localStorage.setItem(coffeeId, editedCoffee);
+      localStorage.setItem(coffeeId, JSON.stringify(editedCoffee));
     }
   }
 }
