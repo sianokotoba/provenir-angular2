@@ -64,21 +64,24 @@ export class CoffeeTableComponent implements OnInit, OnChanges, DoCheck {
 
   getValues() {
     const control = <FormArray> this.coffeeTForm.get('subFormList');
-    if (this.coffees.length === 0) {
-      control.push(this._fb.group({
-        name: '',
-        type: '',
-        displayText: ''
-      }))
-    }
+    // if (this.coffees.length === 0) {
+    //   control.push(this._fb.group({
+    //     name: '',
+    //     type: '',
+    //     displayText: ''
+    //   }))
+    // }
+    console.log("this.coffees", this.coffees)
     for (let i = 0; i < this.coffees.length; i++) {
       const temp = this._fb.group({
-        name: '' || this.coffees[i].name,
-        type: '' || this.coffees[i].type,
-        displayText: '' || this.coffees[i].displayText
+        name: [this.coffees[i].name],
+        type: [this.coffees[i].type],
+        displayText: [this.coffees[i].displayText]
       });
       control.push(temp);
     }
+
+    console.log("~~~~~CONTROL", control)
   }
 
 

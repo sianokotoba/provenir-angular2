@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<mdl-expansion-panel-group #panelGroup *ngIf="coffees">
+<mdl-expansion-panel-group #panelGroup>
   <mdl-expansion-panel *ngFor="let coffee of coffees; let idx = index">
     <mdl-expansion-panel-header>
       <mdl-expansion-panel-header-list-content>
@@ -39,7 +39,7 @@
               <div class="input-areas mdl-cell mdl-cell--11-col mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="coffeeName"
                   formControlName="name"
-                  ngModel name="name">
+                  [(ngModel)]="coffee.name">
               </div>
               <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
                 TYPE:
