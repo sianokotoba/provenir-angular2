@@ -23,7 +23,39 @@ MdlPopoverComponent.prototype.ngOnDestroy = function () {
 
 ## Development server
 
-Run `ng serve -o` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+For a dev server, run the following:
+```sh
+ng serve
+```
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
+## Functionality
+
+### Navbar & Layout
+- Navbar and layout is dictated by the app.component
+- The app.component loads all other components (Form, Table, Dashboard)
+- OnInit, the app.component loads the coffee.service to populate the data which is passed to all other components (localStorage is also checked and used)
+
+### Form
+- All inputs/sections in the form is required
+- Submission can only be done when all sections are filled
+- Review page is generated after submission
+- Continuous submissions are possible
+
+### Table
+- Table outputs all existing coffee data
+- Each coffee is editable and can also be deleted
+- Expandable drawer created for editing and deleting options
+
+### Dashboard
+- Updates according to coffee data added from Form or edited/deleted from the Table
+- Flexbox created and used for responsive adjustments
+
+### Extras
+- Service created for mock API and API calls
+- utils.ts created for re-usability and modularity
 
 
 ## Further help
