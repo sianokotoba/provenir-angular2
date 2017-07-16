@@ -33,7 +33,7 @@ export class CoffeeFormComponent {
       imgURL: '../assets/coffee-default.png'
     }
     this.coffee = newCoffee;
-    localStorage.setItem(form.value.name, JSON.stringify(newCoffee));
+    localStorage.setItem(newCoffee.id, JSON.stringify(newCoffee));
     this.add(newCoffee);
     this.submitted = true;
     form.reset();

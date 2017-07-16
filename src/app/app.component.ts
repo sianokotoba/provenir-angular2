@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       .then(coffees => {
         this.coffees = coffees;
         addToLocalStorage(this.coffees);
-        checkLocalStorage(this.coffees);
+        // checkLocalStorage(this.coffees);
       })
   }
 }
