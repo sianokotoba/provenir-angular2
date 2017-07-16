@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators }   from '@a
 import { CoffeeService } from './coffee.service';
 
 import { Coffee } from './coffee';
-import { deleteFromList, updateCoffeeList, checkLocalStorage } from './utils';
+import { deleteFromList, updateCoffeeList } from './utils';
 
 @Component({
   selector: 'coffee-table',
