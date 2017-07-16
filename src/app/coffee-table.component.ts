@@ -19,12 +19,7 @@ export class CoffeeTableComponent implements OnInit, OnChanges, DoCheck {
     private coffeeService: CoffeeService,
     private _fb: FormBuilder,
     public zone: NgZone
-  ) {
-    this.coffeeTForm = new FormGroup({
-      subFormList: new FormArray([])
-    })
-    this.getValues();
-  }
+  ) { }
 
   types = [
     'Hot',
@@ -35,13 +30,13 @@ export class CoffeeTableComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnInit() {
   // Check local storage on init for correct cofee list
-  console.log("THHREWJLRKFAWE", this.coffees)
+    console.log("THHREWJLRKFAWE", this.coffees)
     // this.getCoffees();
 
-    // this.coffeeTForm = new FormGroup({
-    //   subFormList: new FormArray([])
-    // })
-    // this.getValues();
+    this.coffeeTForm = new FormGroup({
+      subFormList: new FormArray([])
+    })
+    this.getValues();
 
     console.log('!!!!!!', this.coffeeTForm)
   }
@@ -64,13 +59,13 @@ export class CoffeeTableComponent implements OnInit, OnChanges, DoCheck {
 
   getValues() {
     const control = <FormArray> this.coffeeTForm.get('subFormList');
-    if (this.coffees.length === 0) {
-      control.push(this._fb.group({
-        name: '',
-        type: '',
-        displayText: ''
-      }))
-    }
+    // if (this.coffees.length === 0) {
+    //   control.push(this._fb.group({
+    //     name: '',
+    //     type: '',
+    //     displayText: ''
+    //   }))
+    // }
     for (let i = 0; i < this.coffees.length; i++) {
       const temp = this._fb.group({
         name: '' || this.coffees[i].name,
