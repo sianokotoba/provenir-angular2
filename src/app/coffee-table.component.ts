@@ -13,7 +13,6 @@ import { deleteFromList, updateCoffeeList, checkLocalStorage, buildCoffeeListOnR
 
 export class CoffeeTableComponent {
   @Input() coffees;
-  // public coffeeTForm: FormGroup;
 
   constructor(
     private coffeeService: CoffeeService,
@@ -27,33 +26,6 @@ export class CoffeeTableComponent {
     'Decaf',
     'Party Time'
   ];
-
-  // ngAfterViewChecked() {
-  //   console.log('this COFFEEEEE', this.coffees)
-
-  //   // this.coffeeTForm = new FormGroup({
-  //   //   name: new FormControl(),
-  //   //   type: new FormControl(),
-  //   //   displayText: new FormControl()
-  //   // });
-
-  //   this.coffeeTForm = this._fb.group({
-  //     subFormList: this._fb.array([])
-  //   })
-  //   this.getValues();
-  // }
-
-  // getValues() {
-  //   const control = <FormArray> this.coffeeTForm.get('subFormList');
-  //   for (let i = 0; i < this.coffees.length; i++) {
-  //     const temp = this._fb.group({
-  //       name: [this.coffees[i].name],
-  //       type: [this.coffees[i].type],
-  //       displayText: [this.coffees[i].displayText]
-  //     });
-  //     control.push(temp);
-  //   }
-  // }
 
   getCoffees(): void {
     this.coffeeService.getCoffees()
@@ -80,7 +52,6 @@ export class CoffeeTableComponent {
 
     this.coffeeService.update(editedCoffee)
       .then(coffee => {
-        console.log("COFFEEEEE", coffee)
         this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
       })
   }
