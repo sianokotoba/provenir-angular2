@@ -30,41 +30,39 @@ export const buildCoffeeListOnReload = (coffeeList) => {
 }
 
 export const updateCoffeeList = (coffeeList, id, editedCoffee) => {
-  console.log('updating now')
   for (let i = 0; i < coffeeList.length; i++) {
     if (coffeeList[i].id === id) {
-      updateLocalStorage(coffeeList[i].name, editedCoffee);
+      updateLocalStorage(coffeeList[i].id, editedCoffee);
       coffeeList[i] = editedCoffee;
     }
   }
 }
 
-export const updateLocalStorage = (coffeeName, editedCoffee) => {
+export const updateLocalStorage = (coffeeId, editedCoffee) => {
   if (localStorage.length > 0) {
-    if (localStorage.getItem(coffeeName)) {
-      localStorage.setItem(coffeeName, editedCoffee);
+    if (localStorage.getItem(coffeeId)) {
+      localStorage.setItem(coffeeId, editedCoffee);
     }
   }
 }
 
 export const addToCoffeeList = (coffeeList, newCoffee) => {
-  console.log('adding now')
   coffeeList.push(newCoffee);
 }
 
 export const deleteFromList = (coffeeList, id) => {
   for (let i = 0; i < coffeeList.length; i++) {
     if (coffeeList[i].id === id) {
-      deleteFromLocalStorage(coffeeList[i].name);
+      deleteFromLocalStorage(coffeeList[i].id);
       coffeeList.splice(i, 1);
     }
   }
 }
 
-export const deleteFromLocalStorage = (coffeeName) => {
+export const deleteFromLocalStorage = (coffeeId) => {
   if (localStorage.length > 0) {
-    if (localStorage.getItem(coffeeName)) {
-      localStorage.removeItem(coffeeName);
+    if (localStorage.getItem(coffeeId)) {
+      localStorage.removeItem(coffeeId);
     }
   }
 }
