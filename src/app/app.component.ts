@@ -23,11 +23,11 @@ export class AppComponent implements OnInit {
   }
 
   getCoffees(): void {
-    this.coffeeService.getCoffees()
-      .then(coffees => {
-        this.coffees = coffees;
-        addToLocalStorage(this.coffees);
-        checkLocalStorage(this.coffees);
-      })
+    // this.coffeeService.getCoffees()
+    //   .then(coffees => {
+    //     this.coffees = coffees;
+    //     addToLocalStorage(this.coffees);
+    //     checkLocalStorage(this.coffees);
+    //   })
   }
 }

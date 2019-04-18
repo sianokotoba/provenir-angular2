@@ -29,7 +29,6 @@ export class CoffeeFormComponent {
 
   onSubmit(form) {
     const newCoffee = {
-      formId: "9056322",
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       ssn: form.value.ssn.toString(),
@@ -40,6 +39,15 @@ export class CoffeeFormComponent {
     this.coffee = newCoffee;
 
     this.submitted = true;
+
+    // this.coffeeService.postToEndpointPromise(this.coffee)
+    //   .then(result => {
+    //     console.log("promise instead", result)
+    //   })
+
+    // this.coffeeService.getSomething();
+
+    // this.coffeeService.postToEndpoint(this.coffee);
     this.coffeeService.postToEndpoint(this.coffee).subscribe(result => {
       console.log('RES', result);
       this.approvedOrDenied(result['approved']);
@@ -55,10 +63,10 @@ export class CoffeeFormComponent {
   }
 
   add(newCoffee: any): void {
-    this.coffeeService.create(newCoffee)
-      .then(coffee => {
-        addToCoffeeList(this.coffees, coffee);
-      });
+    // this.coffeeService.create(newCoffee)
+    //   .then(coffee => {
+    //     addToCoffeeList(this.coffees, coffee);
+    //   });
   }
 
   approvedOrDenied(approvedValue: string|boolean): void {

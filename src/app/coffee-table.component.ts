@@ -28,17 +28,17 @@ export class CoffeeTableComponent {
   ];
 
   getCoffees(): void {
-    this.coffeeService.getCoffees()
-      .then(coffees => {
-        this.coffees = coffees;
-      })
+    // this.coffeeService.getCoffees()
+    //   .then(coffees => {
+    //     this.coffees = coffees;
+    //   })
   }
 
   deleteCoffee(coffeeId: number): void {
-    this.coffeeService.delete(coffeeId)
-      .then((res) => {
-        this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
-      })
+    // this.coffeeService.delete(coffeeId)
+    //   .then((res) => {
+    //     this.zone.run(() => this.coffees && deleteFromList(this.coffees, coffeeId))
+    //   })
   }
 
   updateCoffee(form, coffeeId, idx) {
@@ -50,9 +50,9 @@ export class CoffeeTableComponent {
       imgURL: this.coffees[idx].imgURL
     }
 
-    this.coffeeService.update(editedCoffee)
-      .then(coffee => {
-        this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
-      })
+    // this.coffeeService.update(editedCoffee)
+    //   .then(coffee => {
+    //     this.zone.run(() => updateCoffeeList(this.coffees, coffeeId, coffee))
+    //   })
   }
 }

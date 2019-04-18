@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { MdlSelectModule } from '@angular2-mdl-ext/select';
 import { MdlExpansionPanelModule } from '@angular2-mdl-ext/expansion-panel';
 import { MaterialModule } from '@angular/material';
-import { HttpModule }    from '@angular/http';
+// import { HttpModule }    from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { CoffeeFormComponent } from './coffee-form.component';
@@ -28,10 +29,11 @@ import { CoffeeService } from './coffee.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    // HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     MdlSelectModule,
     MdlExpansionPanelModule,
     MaterialModule
