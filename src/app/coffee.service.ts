@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 import { Coffee } from './coffee';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CoffeeService {
   private coffeeURL = 'api/coffees';
   private headers = new Headers({'Content-Type': 'application/json'});
+
+  private endpoint = `https://wsc7b9d4b-dev.provenirdev.rocks/ProvWeb/ezapi/EZApiDEGroupCreditApp/CreditAppprocess1555594720248`;
 
   constructor(private http: Http) { }
 
@@ -47,5 +50,12 @@ export class CoffeeService {
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
+  }
+
+  postToEndpoint(formData: any): Observable<any> {
+    console.log("POST TO ENdOOINT", formData)
+    let headers1 = new Headers({ 'Accept': 'application/json','Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers1 });
+    return this.http.post(this.endpoint, formData, options);
   }
 }

@@ -13,7 +13,8 @@ import { addToCoffeeList } from './utils';
 export class CoffeeFormComponent {
   @Input() coffees;
 
-  constructor(private coffeeService: CoffeeService) { }
+  approved = false;
+  denied = false;
 
   coffee = {};
   submitted = false;
@@ -24,19 +25,29 @@ export class CoffeeFormComponent {
     'Party Time'
   ];
 
+  constructor(private coffeeService: CoffeeService) { }
+
   onSubmit(form) {
-    let newCoffee = {
-      id: this.coffees[this.coffees.length  - 1].id + 1,
-      name: form.value.name,
-      type: form.value.type,
-      displayText: form.value.displayText,
-      imgURL: '../assets/coffee-default.png'
-    }
+    const newCoffee = {
+      formId: "9056322",
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      ssn: form.value.ssn.toString(),
+      age: form.value.age.toString(),
+      loanAmount: form.value.loanAmount.toString(),
+      email: form.value.email
+    };
     this.coffee = newCoffee;
-    localStorage.setItem(newCoffee.id, JSON.stringify(newCoffee));
-    this.add(newCoffee);
+
     this.submitted = true;
-    form.reset();
+    this.coffeeService.postToEndpoint(this.coffee).subscribe(result => {
+      console.log('RES', result);
+      this.approvedOrDenied(result['approved']);
+      form.reset();
+    }, error => {
+      console.log("error", error)
+      // alert(`There was an issue submitting your application!`);
+    });
   }
 
   newSubmission() {
@@ -48,5 +59,15 @@ export class CoffeeFormComponent {
       .then(coffee => {
         addToCoffeeList(this.coffees, coffee);
       });
+  }
+
+  approvedOrDenied(approvedValue: string|boolean): void {
+    if (approvedValue || approvedValue === 'true') {
+      this.approved = true;
+      this.denied = false;
+    } else {
+      this.approved = false;
+      this.denied = true;
+    }
   }
 }
