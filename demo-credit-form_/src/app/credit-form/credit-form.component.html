@@ -1,108 +1,109 @@
-<div *ngIf="!approved && !denied">
+<div class="parent">
   <div class="center-align">
-    <h3>
-      Submit Your Application
-    </h3>
-    <hr />
-    <!-- <img src='../assets/coffee-default.png'/> -->
-  </div>
-  <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)">
-    <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        FIRST NAME:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="firstName"
-          required
-          ngModel name="firstName">
-      </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        LAST NAME:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="lastName"
-          required
-          ngModel name="lastName">
-      </div>
+    <img src='../assets/chase-bg-top.png'/>
+    <form #coffeeForm="ngForm" (ngSubmit)="onSubmit(coffeeForm)" *ngIf="!approved && !denied">
+      <h3 style="text-align: center">
+          Submit Your Application
+        </h3>
+        <hr />
+      <div class="mdl-grid" style="width: 80%">
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          FIRST NAME:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="firstName"
+            required
+            ngModel name="firstName">
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          LAST NAME:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="lastName"
+            required
+            ngModel name="lastName">
+        </div>
 
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        SSN:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" pattern="[0-9]{9}" id="ssn"
-          required
-          ngModel name="ssn">
-      </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          SSN:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" pattern="[0-9]{9}" id="ssn"
+            required
+            ngModel name="ssn">
+        </div>
 
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        AGE:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="number" id="age"
-          required
-          ngModel name="age">
-      </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          AGE:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="number" id="age"
+            required
+            ngModel name="age">
+        </div>
 
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        LOAN AMOUNT:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="number" id="loanAmount"
-          required
-          ngModel name="loanAmount">
-      </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          LOAN AMOUNT:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="number" id="loanAmount"
+            required
+            ngModel name="loanAmount">
+        </div>
 
-      <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
-        EMAIL:
-      </div>
-      <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="email" id="email"
-          required
-          ngModel name="email">
-      </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-textfield mdl-js-textfield">
+          EMAIL:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="email" id="email"
+            required
+            ngModel name="email">
+        </div>
 
-      <!-- <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
-        TYPE:
+        <!-- <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield">
+          TYPE:
+        </div>
+        <div class="input-areas mdl-cell mdl-cell--11-col">
+          <mdl-select
+            required
+            ngModel name="type">
+            <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
+          </mdl-select>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+          DISPLAY TEXT:
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
+            required
+            ngModel name="displayText">
+        </div> -->
+        <!-- Accent-colored raised button with ripple -->
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            type="submit"
+            style="float: right"
+            [disabled]="!coffeeForm.form.valid">
+            Submit
+          </button>
+        </div>
       </div>
-      <div class="input-areas mdl-cell mdl-cell--11-col">
-        <mdl-select
-          required
-          ngModel name="type">
-          <mdl-option *ngFor="let type of types" [value]="type">{{type}}</mdl-option>
-        </mdl-select>
-      </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
-        DISPLAY TEXT:
-      </div>
-      <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="text" id="coffeeDisplayText"
-          required
-          ngModel name="displayText">
-      </div> -->
-      <!-- Accent-colored raised button with ripple -->
-      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          type="submit"
-          style="float: right"
-          [disabled]="!coffeeForm.form.valid">
-          Submit
-        </button>
-      </div>
+    </form>
+    <div *ngIf="approved || denied"
+      class="mdl-cell mdl-cell--12-col  mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="text-align: center">
+      <ng-container *ngIf="approved">
+        <h3>Congratulations!</h3>
+        <h5>You've been approved!</h5>
+        <i class="material-icons" style="font-size: 100px; color: greenyellow">thumb_up</i>
+      </ng-container>
+
+      <ng-container *ngIf="denied">
+        <h3>We apologize.</h3>
+        <h5>Your application has been denied.</h5>
+        <i class="material-icons" style="font-size: 100px; color: red">thumb_down</i>
+      </ng-container>
     </div>
-  </form>
+    <img src='../assets/chase-bg-bottom.png'/>
+  </div>
 </div>
 
-<div *ngIf="approved || denied"
-  class="mdl-cell mdl-cell--12-col  mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="text-align: center">
-  <ng-container *ngIf="approved">
-    <h3>Congratulations!</h3>
-    <h5>You've been approved!</h5>
-    <i class="material-icons" style="font-size: 100px; color: greenyellow">thumb_up</i>
-  </ng-container>
-
-  <ng-container *ngIf="denied">
-    <h3>We apologize.</h3>
-    <h5>Your application has been denied.</h5>
-    <i class="material-icons" style="font-size: 100px; color: red">thumb_down</i>
-  </ng-container>
-</div>
