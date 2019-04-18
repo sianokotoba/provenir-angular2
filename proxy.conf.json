@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://wsc7b9d4b-dev.provenirdev.rocks",
+        "secure": false
+    }
+}
